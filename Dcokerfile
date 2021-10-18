@@ -1,0 +1,8 @@
+FROM golang:latest
+ENV GOPROXY https://goproxy.cn,direct
+WORKDIR /code/src/
+RUN apt-get install git
+RUN git clone https://github.com/yaion/Operation.git
+RUN go build ./Operation/main.go
+EXPOSE 80
+ENTRYPOINT ["./main"]
